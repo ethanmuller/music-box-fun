@@ -9,6 +9,7 @@ export const state = {
   appState: {
     snapTo: 'grid',
     isPlaying: false,
+    midiEnabled: false,
     audioDisabledMessageStatus: 'hidden',
     offCanvasSidebarFocused: 'none',
     activeTab: 'song-library',

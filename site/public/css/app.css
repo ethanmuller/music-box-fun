@@ -677,6 +677,21 @@
   cursor: pointer;
 }
 
+.midi-out-button {
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  background-color: var(--controls-button-color);
+  border-radius: 5px;
+  border: 1px solid var(--controls-border-color);
+  border-bottom: 1px solid var(--controls-border-bottom-color);
+  padding: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
 .new-song:hover {
   background-color: #f8f8f8;
 }
