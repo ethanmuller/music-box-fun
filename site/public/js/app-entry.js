@@ -9,6 +9,7 @@ import { NewSongButton } from './components/new-song-button.js';
 import { MusicBoxTypeSelect } from './components/music-box-type-select.js';
 import { Tempo } from './components/tempo.js';
 import { SnapToGridSelect } from './components/snap-to-grid-select.js';
+import { MidiOutSelect } from './components/midi-out-select.js';
 import { Footnote } from './components/footnote.js';
 import { SongTitle } from './components/song-title.js';
 import { PitchHeader } from './components/pitch-header.js';
@@ -60,6 +61,7 @@ urlManager.getStateFromUrlAsync().then(urlState => {
   new MusicBoxTypeSelect().render();
   new Tempo().render();
   new SnapToGridSelect().render();
+  new MidiOutSelect().render();
   new Footnote().render();
   new SongTitle().render();
   new PitchHeader().render();

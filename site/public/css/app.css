@@ -622,6 +622,8 @@
 
 .controls {
   flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
 }
 
 .controls__section {
@@ -631,6 +633,10 @@
 /* define spacing between controls elements */
 .controls__section > *:not(:last-child) {
   padding-bottom: 1rem;
+}
+
+.controls__bottom {
+  margin-top: auto;
 }
 
 .play-button {
