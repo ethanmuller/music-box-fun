@@ -27,12 +27,10 @@ export class MidiOutSelect extends MBComponent {
   render_output_options() {
     let result = '';
     const outputs = musicBoxStore.state.appState.midiAccess.outputs;
-    let isFirstIteration = true
 
     for (const entry of musicBoxStore.state.appState.midiAccess.outputs) {
       const output = entry[1];
-      result += `<option value="${output.id}" ${isFirstIteration ? 'selected' : ''}>${output.name}</option>`
-      isFirstIteration = false;
+      result += `<option value="${output.id}">${output.name}</option>`
     }
 
     return result
@@ -48,8 +46,7 @@ export class MidiOutSelect extends MBComponent {
         <label class="midi-out">
           <span class="midi-out__label">MIDI Out</span>
           <select class="select" name="select-midi-out">
-          <option value="">none</option>
-          ${this.render_output_options()}
+            ${this.render_output_options()}
           </select>
         </label>
       </div>

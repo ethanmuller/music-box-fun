@@ -52,7 +52,7 @@ export const audioPlayer = {
     // Thus, the Transport is able to see the events in this "song" when it's time to play the timeline.
     new Part(function (time, note) {
        sampler.triggerAttackRelease(note, '8n', time);
-       sendMidiNoteOnOff(Midi(note).toMidi());
+       sendMidiNoteOnOff(Midi(note).toMidi(), time * 1000);
     }, sequence).start(0);
   },
 
