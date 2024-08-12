@@ -1,6 +1,8 @@
 import { musicBoxStore } from '../music-box-store.js';
 import { sampler, isSamplerLoaded } from './sampler.js';
 import { getContext } from '../vendor/tone.js';
+import { Midi } from '../vendor/tone.js';
+import { sendMidiNoteOnOff } from '../common/send-midi-note-on-off.js';
 
 // We had to go with the revealing module pattern here. I tried a plain
 // object but our scroll event handler required us to use bind(). Unfortunately,
@@ -62,7 +64,7 @@ export const playheadObserver = (function () {
 
       // TRIGGER SOUND
       isSamplerLoaded && sampler.triggerAttackRelease(entry.target.parentElement.id, '8n');
-      console.log(entry.target.parentElement.id)
+      sendMidiNoteOnOff(Midi(entry.target.parentElement.id).toMidi());
     });
   }
 

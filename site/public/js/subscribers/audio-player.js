@@ -6,6 +6,8 @@ import { WAIT_FOR_STATE } from '../common/constants.js';
 import { Transport, Part, getContext } from '../vendor/tone.js';
 import { audioContextResuming } from './audio-context.js';
 import { debounce } from '../utils/debounce.js';
+import { Midi } from '../vendor/tone.js';
+import { sendMidiNoteOnOff } from '../common/send-midi-note-on-off.js';
 
 const TICKS_PER_PIXEL = 4;
 const audioContext = getContext();
@@ -50,7 +52,7 @@ export const audioPlayer = {
     // Thus, the Transport is able to see the events in this "song" when it's time to play the timeline.
     new Part(function (time, note) {
        sampler.triggerAttackRelease(note, '8n', time);
-      console.log(note, time)
+       sendMidiNoteOnOff(Midi(note).toMidi());
     }, sequence).start(0);
   },
 
