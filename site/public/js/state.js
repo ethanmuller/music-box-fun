@@ -10,6 +10,8 @@ export const state = {
     snapTo: 'grid',
     isPlaying: false,
     midiEnabled: false,
+    midiAccess: null,
+    midiOutputId: null,
     audioDisabledMessageStatus: 'hidden',
     offCanvasSidebarFocused: 'none',
     activeTab: 'song-library',

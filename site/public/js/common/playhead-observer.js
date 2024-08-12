@@ -62,6 +62,7 @@ export const playheadObserver = (function () {
 
       // TRIGGER SOUND
       isSamplerLoaded && sampler.triggerAttackRelease(entry.target.parentElement.id, '8n');
+      console.log(entry.target.parentElement.id)
     });
   }
 

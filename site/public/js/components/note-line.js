@@ -7,6 +7,7 @@ import { snapToInterval } from '../common/snap-to-interval.js';
 import { forEachNotes, isNotePositionSilent, getNoteYPos } from '../common/notes.js';
 import { getFinalBarLineYPos } from '../common/pages.js';
 import { NOTE_LINE_STARTING_GAP } from '../common/constants.js';
+import { Midi } from '../vendor/tone.js';
 
 const DEFAULT_SHADOW_NOTE_POSITION = 8;
 
@@ -112,6 +113,17 @@ export class NoteLine extends MBComponent {
     }
   }
 
+  sendMidiNoteOut(midiNoteNumber) {
+    const noteOnMessage = [0x90, midiNoteNumber, 0x7f];
+    const portID = musicBoxStore.state.appState.midiOutputId;
+    const midiAccess = musicBoxStore.state.appState.midiAccess
+    if (midiAccess) {
+      const output = midiAccess.outputs.get(portID);
+      output.send(noteOnMessage);
+      console.log(noteOnMessage)
+    }
+  }
+
   addNote(pitch, yPos) {
     const newPitchArray = [...musicBoxStore.state.songState.songData[pitch]]
       .concat(yPos)
@@ -119,6 +131,7 @@ export class NoteLine extends MBComponent {
 
     if (!isNotePositionSilent(yPos, newPitchArray)) {
       isSamplerLoaded && sampler.triggerAttackRelease(pitch, '8n');
+      this.sendMidiNoteOut(Midi(pitch).toMidi());
     }
 
     musicBoxStore.setState(`songState.songData.${pitch}`, newPitchArray);
